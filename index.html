@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang=en>
+
+<head>
+    <meta charset=UTF-8>
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <title>RevoU | Mini Project | Home</title>
+    <link rel=stylesheet href=/css/style.css>
+</head>
+
+<body>
+    <header class=nav>
+        <div class=logo>
+            <img src=/asset/logo.png alt=Logo>
+        </div>
+        <ul class=navbar>
+            <li><a style="border-right:1px solid #000" href=/index.html>Home</a></li>
+            <li>
+                <a style="border-right:1px solid #000" href=/our-profile.html>Our Profile</a>
+            </li>
+            <li>
+                <a style="border-right:1px solid #000" href=javascript:location.reload()>Achievement</a>
+            </li>
+            <li>
+                <a href=javascript:location.reload()>Message Us</a>
+            </li>
+        </ul>
+    </header>
+
+    <section class=header>
+        <h1 id=welcomeMessage>Hi, Welcome To The Website</h1>
+        <p>Ini adalah website latihan pertama</p>
+        <div class=center-image>
+            <img src=/asset/background_20240314.png class=resize alt="Header Image">
+        </div>
+    </section>
+
+    <section class=facilities>
+        <h1>Our Facilitation</h1>
+        <div class=facility>
+            <div class=circle>
+                <img class=circular-image src=/asset/ProfessionalTeacher.png alt=ProfessionalTeacher>
+            </div>
+            <p>Professional Teacher</p>
+        </div>
+        <div class=facility>
+            <div class=circle>
+                <img class=circular-image src=/asset/SportField.png alt=SportField>
+            </div>
+            <p>Sport Field</p>
+        </div>
+        <div class=facility>
+            <div class=circle>
+                <img class=circular-image src=/asset/Classroom.png alt=Classroom>
+            </div>
+            <p>Classroom</p>
+        </div>
+    </section>
+
+    <section class=contact>
+        <div class=form-container style=padding-right:100px>
+            <h1>Message Us</h1>
+            <form id=contactForm onsubmit="return validateForm()">
+                <div class=form-group>
+                    <label for=name>Nama:</label>
+                    <input id=name name=name placeholder=Nama>
+                </div>
+                <div class=form-group>
+                    <label for=date>Tanggal Lahir:</label>
+                    <input type=date id=date name=date placeholder="Tanggal Lahir">
+                </div>
+                <div class=form-group>
+                    <label for=gender>Jenis Kelamin:</label>
+                    <div class=gender>
+                        <input type=radio id=male name=gender value=male>
+                        <label for=male>Laki-Laki</label>
+                        <input type=radio id=female name=gender value=female>
+                        <label for=female>Perempuan</label>
+                    </div>
+                </div>
+                <div class=form-group>
+                    <label for=message>Pesan:</label>
+                    <textarea id=message name=message placeholder=Pesan></textarea>
+                </div>
+                <button type=submit>Submit</button>
+            </form>
+        </div>
+        <div class=user-info>
+            <div id=borderthis>
+                <p><strong>Current time:</strong> <span id=currentTime></span></p>
+                <br>
+                <div id=formOutput>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Created By Haidaruddin Muhammad Ramdhan<sup>©</sup></p>
+    </footer>
+
+    <script src=/js/script.js></script>
+</body>
+
+</html>
