@@ -223,6 +223,7 @@ button:hover {
     margin-right: 10px;
 }
 
+#name,
 .form-group input[type=date],
 .form-group input[type=text],
 .form-group textarea {
