@@ -1,105 +1,145 @@
-<!doctype html>
-<html lang=en>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset=UTF-8>
-    <meta name=viewport content="width=device-width,initial-scale=1">
-    <title>RevoU | Mini Project | Home</title>
-    <link rel=stylesheet href=/css/style.css>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katik - Geometry Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-    <header class=nav>
-        <div class=logo>
-            <img src=/asset/logo.png alt=Logo>
+
+    <header class="header">
+        <h1>Welcome to Katik</h1>
+        <p>Hai Sobat, Selamat datang di Katik :)<br>
+           Sebuah web apps sederhana yang berfungsi untuk menghitung nilai luas dan keliling bangun datar
+        </p>
+        <div class="navigation">
+            <button class="nav-button" onclick="toggleSection('segitigaSubButtons')">Segitiga</button>
+            <div id="segitigaSubButtons" class="sub-buttons" style="display: none;">
+                <button class="sub-button" onclick="showSection('bagianLuasSegitiga')">Luas</button>
+                <button class="sub-button" onclick="showSection('bagianKelilingSegitiga')">Keliling</button>
+            </div>
+            <button class="nav-button" onclick="toggleSection('jajarSubButtons')">Jajar Genjang</button>
+            <div id="jajarSubButtons" class="sub-buttons" style="display: none;">
+                <button class="sub-button" onclick="showSection('bagianLuasJajarGenjang')">Luas</button>
+                <button class="sub-button" onclick="showSection('bagianKelilingJajarGenjang')">Keliling</button>
+            </div>
         </div>
-        <ul class=navbar>
-            <li><a style="border-right:1px solid #000" href=/index.html>Home</a></li>
-            <li>
-                <a style="border-right:1px solid #000" href=/our-profile.html>Our Profile</a>
-            </li>
-            <li>
-                <a style="border-right:1px solid #000" href=javascript:location.reload()>Achievement</a>
-            </li>
-            <li>
-                <a href=javascript:location.reload()>Message Us</a>
-            </li>
-        </ul>
     </header>
 
-    <section class=header>
-        <h1 id=welcomeMessage>Hi, Welcome To The Website</h1>
-        <p>Ini adalah website latihan pertama</p>
-        <div class=center-image>
-            <img src=/asset/background_20240314.png class=resize alt="Header Image">
-        </div>
+    <section id="bagianLuasSegitiga" class="bagian-kalkulasi" style="display: none;">
+        <h2>Luas Segitiga</h2>
+        <img src="asset/Segitiga.png" class="diagram">
+        <p>Rumus Luas Segitiga yaitu :<br>
+           L = 1/2 x a x t
+        </p>
+        <p>Di mana :<br>
+           L = Luas<br>
+           a = Panjang Alas<br>
+           t = Tinggi
+        </p>
+
+        <form id="formLuasSegitiga">
+            <label for="alas_segitiga">Panjang Alas (a):</label>
+            <input type="number" id="alas_segitiga" placeholder="Panjang Alas" min="0">
+            
+            <label for="tinggi_segitiga">Tinggi (t):</label>
+            <input type="number" id="tinggi_segitiga" placeholder="Tinggi" min="0">
+            
+            <div id="hasilLuasSegitiga" class="result"></div>
+            
+            <button type="button" class="tombol-hitung" onclick="calculateTriangleArea()">Hitung</button>
+            <button type="reset" class="tombol-reset" onclick="clearResults()">Reset</button>
+        </form>
     </section>
 
-    <section class=facilities>
-        <h1>Our Facilitation</h1>
-        <div class=facility>
-            <div class=circle>
-                <img class=circular-image src=/asset/ProfessionalTeacher.png alt=ProfessionalTeacher>
-            </div>
-            <p>Professional Teacher</p>
-        </div>
-        <div class=facility>
-            <div class=circle>
-                <img class=circular-image src=/asset/SportField.png alt=SportField>
-            </div>
-            <p>Sport Field</p>
-        </div>
-        <div class=facility>
-            <div class=circle>
-                <img class=circular-image src=/asset/Classroom.png alt=Classroom>
-            </div>
-            <p>Classroom</p>
-        </div>
+    <section id="bagianKelilingSegitiga" class="bagian-kalkulasi" style="display: none;">
+        <h2>Keliling Segitiga</h2>
+        <img src="asset/Segitiga.png" class="diagram">
+        <p>Rumus Keliling Segitiga yaitu :<br>
+           K = S1 + S2 + S3
+        </p>
+        <p>Di mana :<br>
+           K = Keliling<br>
+           S1 = Sisi A<br>
+           S2 = Sisi B<br>
+           S3 = Sisi C
+        </p>
+
+        <form id="formKelilingSegitiga">
+            <label for="sisi_satu">Sisi A (S1):</label>
+            <input type="number" id="sisi_satu" placeholder="Sisi A" min="0">
+            
+            <label for="sisi_dua">Sisi B (S2):</label>
+            <input type="number" id="sisi_dua" placeholder="Sisi B" min="0">
+            
+            <label for="sisi_tiga">Sisi C (S3):</label>
+            <input type="number" id="sisi_tiga" placeholder="Sisi C" min="0">
+            
+            <div id="hasilKelilingSegitiga" class="result"></div>
+            
+            <button type="button" class="tombol-hitung" onclick="calculateTrianglePerimeter()">Hitung</button>
+            <button type="reset" class="tombol-reset" onclick="clearResults()">Reset</button>
+        </form>
     </section>
 
-    <section class=contact>
-        <div class=form-container style=padding-right:100px>
-            <h1>Message Us</h1>
-            <form id=contactForm onsubmit="return validateForm()">
-                <div class=form-group>
-                    <label for=name>Nama:</label>
-                    <input id=name name=name placeholder=Nama>
-                </div>
-                <div class=form-group>
-                    <label for=date>Tanggal Lahir:</label>
-                    <input type=date id=date name=date placeholder="Tanggal Lahir">
-                </div>
-                <div class=form-group>
-                    <label for=gender>Jenis Kelamin:</label>
-                    <div class=gender>
-                        <input type=radio id=male name=gender value=male>
-                        <label for=male>Laki-Laki</label>
-                        <input type=radio id=female name=gender value=female>
-                        <label for=female>Perempuan</label>
-                    </div>
-                </div>
-                <div class=form-group>
-                    <label for=message>Pesan:</label>
-                    <textarea id=message name=message placeholder=Pesan></textarea>
-                </div>
-                <button type=submit>Submit</button>
-            </form>
-        </div>
-        <div class=user-info>
-            <div id=borderthis>
-                <p><strong>Current time:</strong> <span id=currentTime></span></p>
-                <br>
-                <div id=formOutput>
-                </div>
-            </div>
-        </div>
+    <section id="bagianLuasJajarGenjang" class="bagian-kalkulasi" style="display: none;">
+        <h2>Luas Jajar Genjang</h2>
+        <img src="asset/JajarGenjang.png" class="diagram">
+        <p>Rumus Luas Jajar Genjang yaitu :<br>
+           L = a x t
+        </p>
+        <p>Di mana :<br>
+           L = Luas<br>
+           a = Panjang Alas<br>
+           t = Tinggi
+        </p>
+
+        <form id="formLuasJajarGenjang">
+            <label for="alasJajarGenjang1">Panjang Alas (a):</label>
+            <input type="number" id="alasJajarGenjang1" placeholder="Panjang Alas" min="0">
+            
+            <label for="tinggiJajarGenjang1">Tinggi (t):</label>
+            <input type="number" id="tinggiJajarGenjang1" placeholder="Tinggi" min="0">
+            
+            <div id="hasilLuasJajarGenjang" class="result"></div>
+            
+            <button type="button" class="tombol-hitung" onclick="calculateParallelogramArea()">Hitung</button>
+            <button type="reset" class="tombol-reset" onclick="clearResults()">Reset</button>
+        </form>
+    </section>
+
+    <section id="bagianKelilingJajarGenjang" class="bagian-kalkulasi" style="display: none;">
+        <h2>Keliling Jajar Genjang</h2>
+        <img src="asset/JajarGenjang.png" class="diagram">
+        <p>Rumus Keliling Jajar Genjang yaitu :<br>
+           K = 2 x (a + b)
+        </p>
+        <p>Di mana :<br>
+           K = Keliling<br>
+           a = Panjang Alas<br>
+           b = Panjang Sisi Miring
+        </p>
+
+        <form id="formKelilingJajarGenjang">
+            <label for="alasJajarGenjang2">Panjang Alas (a):</label>
+            <input type="number" id="alasJajarGenjang2" placeholder="Panjang Alas" min="0">
+            
+            <label for="tinggiJajarGenjang2">Panjang Sisi Miring (b):</label>
+            <input type="number" id="tinggiJajarGenjang2" placeholder="Panjang Sisi Miring" min="0">
+            
+            <div id="hasilKelilingJajarGenjang" class="result"></div>
+            
+            <button type="button" class="tombol-hitung" onclick="calculateParallelogramPerimeter()">Hitung</button>
+            <button type="reset" class="tombol-reset" onclick="clearResults()">Reset</button>
+        </form>
     </section>
 
     <footer>
-        <p>Created By Haidaruddin Muhammad Ramdhan<sup>©</sup></p>
+        <p>&copy; 2024 <a href="https://github.com/ramhaidar" style="text-decoration: none;">ramhaidar</a> All Rights Reserved</p>
     </footer>
 
-    <script src=/js/script.js></script>
+    <script src="js/script.js"></script>
 </body>
-
 </html>

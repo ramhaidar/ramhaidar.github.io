@@ -1,67 +1,47 @@
-function askForName() {
-    let name = prompt("Please enter your name:");
-    let welcomeMessage = document.getElementById("welcomeMessage");
-
-    welcomeMessage.textContent = name
-        ? `Hi ${name}, Welcome To The Website`
-        : "Hi, Welcome To The Website";
+function toggleSection(id) {
+    const section = document.getElementById(id);
+    section.style.display = section.style.display === 'none' ? 'block' : 'none';
 }
 
-function updateTime() {
-    let currentTimeElement = document.getElementById("currentTime");
-    let currentDate = new Date();
-
-    currentTimeElement.textContent = currentDate.toLocaleString("en-US", {
-        weekday: "short",
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        timeZoneName: "short",
-    });
+function showSection(sectionId) {
+    document.querySelectorAll('.bagian-kalkulasi').forEach(section => section.style.display = 'none');
+    document.getElementById(sectionId).style.display = 'block';
 }
 
-function validateForm() {
-    let name = document.getElementById("name").value.trim();
-    let date = document.getElementById("date").value;
-    let gender = document.querySelector('input[name="gender"]:checked');
-    let message = document.getElementById("message").value.trim();
+showSection('bagianLuasSegitiga');
 
-    if (name === "") {
-        alert("Nama harus diisi.");
-        return false;
-    }
-    if (date === "") {
-        alert("Tanggal Lahir harus diisi.");
-        return false;
-    }
-    if (!gender) {
-        alert("Jenis Kelamin harus dipilih.");
-        return false;
-    }
-    if (message === "") {
-        alert("Pesan harus diisi.");
-        return false;
-    }
-
-    let formOutput = `
-      <p><strong>Nama:</strong> ${name}</p>
-      <p><strong>Tanggal Lahir:</strong> ${date}</p>
-      <p><strong>Jenis Kelamin:</strong> ${gender.value === "male" ? "Laki-Laki" : "Perempuan"
-        }</p>
-      <p><strong>Pesan:</strong> ${message}</p>
-    `;
-
-    document.getElementById("formOutput").innerHTML = formOutput;
-    return false;
+function calculateTriangleArea() {
+    const base = parseFloat(document.getElementById('alas_segitiga').value);
+    const height = parseFloat(document.getElementById('tinggi_segitiga').value);
+    const area = 0.5 * base * height;
+    document.getElementById('hasilLuasSegitiga').textContent = `Luas: ${area}`;
 }
 
-window.onload = function () {
-    if (window.location.pathname === "/index.html" || window.location.pathname === "/") {
-        askForName();
-        updateTime();
-        setInterval(updateTime, 1000);
-    }
-};
+function calculateTrianglePerimeter() {
+    const side1 = parseFloat(document.getElementById('sisi_satu').value);
+    const side2 = parseFloat(document.getElementById('sisi_dua').value);
+    const side3 = parseFloat(document.getElementById('sisi_tiga').value);
+    const perimeter = side1 + side2 + side3;
+    document.getElementById('hasilKelilingSegitiga').textContent = `Keliling: ${perimeter}`;
+}
+
+function calculateParallelogramArea() {
+    const base = parseFloat(document.getElementById('alasJajarGenjang1').value);
+    const height = parseFloat(document.getElementById('tinggiJajarGenjang1').value);
+    const area = base * height;
+    document.getElementById('hasilLuasJajarGenjang').textContent = `Luas: ${area}`;
+}
+
+function calculateParallelogramPerimeter() {
+    const base = parseFloat(document.getElementById('alasJajarGenjang2').value);
+    const side = parseFloat(document.getElementById('tinggiJajarGenjang2').value);
+    const perimeter = 2 * (base + side);
+    document.getElementById('hasilKelilingJajarGenjang').textContent = `Keliling: ${perimeter}`;
+}
+
+function clearResults() {
+    document.getElementById('hasilKelilingJajarGenjang').textContent = '';
+    document.getElementById('hasilLuasJajarGenjang').textContent = '';
+    document.getElementById('hasilKelilingSegitiga').textContent = '';
+    document.getElementById('hasilLuasSegitiga').textContent = '';
+}
